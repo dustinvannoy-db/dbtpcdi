@@ -1,28 +1,19 @@
 {{
     config(
-        materialized = 'table'
+        materialized = 'streaming_table'
     )
 }}
 
 select
     *,
-    1 as batchid
-from
-    {{ source('tpcdi', 'BatchDateuno') }}
-
- UNION ALL
-
-select
-    *,
-    2 as batchid
-from
-    {{ source('tpcdi', 'BatchDatedos') }}
-
- UNION ALL
-
- select
-    *,
-    3 as batchid
-from
-    {{ source('tpcdi', 'BatchDatetres') }}
+    int(substring(_metadata.file_path FROM (position('/Batch', _metadata.file_path) + 6) FOR 1)) batchid
+from STREAM read_files(
+  "{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch*",
+  format => "csv",
+  inferSchema => False, 
+  header => False,
+  sep => "|",
+  fileNamePattern => "BatchDate.txt", 
+  schema => "batchdate DATE"
+)
 

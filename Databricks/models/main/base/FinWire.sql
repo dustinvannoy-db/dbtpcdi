@@ -6,4 +6,4 @@
 }}
 
 select *, substring(value, 16, 3) rectype from 
-{{ source('tpcdi', 'FinWireStg') }}
+FROM text.`{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch1/FINWIRE[0-9][0-9][0-9][0-9]Q[1-4]`;

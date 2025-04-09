@@ -1,19 +1,18 @@
 {{
     config(
-        materialized = 'view'
+        materialized = 'streaming_table'
     )
 }}
-select
+SELECT
     *,
-    2 as batchid
-from
-    {{ source('tpcdi', 'customerincrementaldos') }}
-
- UNION ALL
-
- select
-    *,
-    3 as batchid
-from
-    {{ source('tpcdi', 'customerincrementaltres') }}
+    int(substring(_metadata.file_path FROM (position('/Batch', _metadata.file_path) + 6) FOR 1)) batchid
+FROM read_files(
+    "{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch{2,3}",
+    format => "csv",
+    inferSchema => False,
+    header => False,
+    sep => "|",
+    fileNamePattern => "Customer.txt",
+    schema => "cdc_flag STRING, cdc_dsn BIGINT, customerid BIGINT, taxid STRING, status STRING, lastname STRING, firstname STRING, middleinitial STRING, gender STRING, tier TINYINT, dob DATE, addressline1 STRING, addressline2 STRING, postalcode STRING, city STRING, stateprov STRING, country STRING, c_ctry_1 STRING, c_area_1 STRING, c_local_1 STRING, c_ext_1 STRING, c_ctry_2 STRING, c_area_2 STRING, c_local_2 STRING, c_ext_2 STRING, c_ctry_3 STRING, c_area_3 STRING, c_local_3 STRING, c_ext_3 STRING, email1 STRING, email2 STRING, lcl_tx_id STRING, nat_tx_id STRING"
+  )
 
