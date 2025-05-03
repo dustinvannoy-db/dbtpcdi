@@ -4,8 +4,7 @@
     )
 }}
 SELECT
-    *,
-    1 as batchid
+    *
 FROM read_files(
     "{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch1",
     format => "csv",
@@ -13,5 +12,5 @@ FROM read_files(
     header => False,
     sep => "|",
     fileNamePattern => "CashTransaction.txt",
-    schema => "accountid BIGINT, ct_dts TIMESTAMP, ct_amt DOUBLE, ct_name STRING"
+    schema => "ct_ca_id bigint, ct_dts timestamp, ct_amt double, ct_name string"
   )

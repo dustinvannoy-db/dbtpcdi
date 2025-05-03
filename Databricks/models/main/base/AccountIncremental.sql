@@ -13,6 +13,6 @@ SELECT
     header => False,
     sep => "|",
     fileNamePattern => "Account.txt",
-    schema => "cdc_flag STRING, cdc_dsn BIGINT, accountid BIGINT, brokerid BIGINT, customerid BIGINT, accountdesc STRING, taxstatus TINYINT, status STRING"
+    schema => "cdc_flag string, cdc_dsn bigint, accountid bigint, ca_b_id bigint, ca_c_id bigint, accountDesc string, taxstatus tinyint, ca_st_id string"
   )
 

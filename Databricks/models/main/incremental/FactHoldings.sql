@@ -20,7 +20,7 @@ FROM (
   SELECT 
     * ,
     1 batchid
-  FROM {{ source('tpcdi', 'HoldingHistory') }}
+  FROM {{ ref('HoldingHistory') }}
   UNION ALL
   SELECT * except(cdc_flag, cdc_dsn)
   FROM {{ ref('HoldingIncremental') }}) hh

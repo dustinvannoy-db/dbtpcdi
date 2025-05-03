@@ -1,3 +1,5 @@
+local_*
+
 # dbt files
 logs/dbt.log
 logs/dbt.log.legacy

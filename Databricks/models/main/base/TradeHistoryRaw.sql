@@ -4,14 +4,14 @@
     )
 }}
 select
-    *
+    *,
+    1 as batchid
 from read_files(
   "{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch1",
     format => "csv",
     inferSchema => False,
     header => False,
     sep => "|",
-    fileNamePattern => "HoldingHistory.txt",
-    schema => "hh_h_t_id INT, hh_t_id INT, hh_before_qty INT, hh_after_qty INT"
+    fileNamePattern => "TradeHistory.txt",
+    schema => "th_t_id bigint, th_dts timestamp, th_st_id string"
   )
-

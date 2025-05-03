@@ -34,7 +34,7 @@ FROM (
         wh.w_dts,
         batchid 
       FROM (
-        SELECT *, 1 batchid FROM {{ source('tpcdi', 'WatchHistory') }}
+        SELECT *, 1 batchid FROM {{ ref('WatchHistory') }}
         UNION ALL
         SELECT * except(cdc_flag, cdc_dsn) FROM {{ ref('WatchIncremental') }}) wh
       JOIN {{ ref('DimDate') }} d

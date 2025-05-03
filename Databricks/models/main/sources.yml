@@ -10,7 +10,7 @@ sources:
      
       - name: StatusType
         external:
-          location: /Volumes/tpcdi/tpcdi_raw_data/tpcdi_volume/sf={{var("benchmark")}}/Batch1/StatusType.txt   # hdfs://, s3://, azure://, dbfs://, ...
+          location: s3://databricks-e2demofieldengwest/b169b504-4c54-49f2-bc3a-adf4b128f36d/volumes/c98e57a9-bf59-41bb-85e3-7beea1b61eee/sf={{var("benchmark")}}/Batch1/StatusType.txt   # hdfs://, s3://, azure://, dbfs://, ...
           using: csv
 
           options:                           # as needed

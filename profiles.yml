@@ -31,7 +31,7 @@ sql_endpoints:
       database: "{{ env_var('SNOWFLAKE_TEST_DATABASE') }}"
       warehouse: "{{ env_var('SNOWFLAKE_TEST_WAREHOUSE') }}"
       schema: audit_helper_integration_tests_snowflake
-      threads: 25
+      threads: 10
 
     databricks:
       type: databricks
@@ -39,9 +39,9 @@ sql_endpoints:
       catalog: "{{ env_var('DATABRICKS_TEST_CATALOG') }}"
       schema: "{{ env_var('DATABRICKS_TEST_SCHEMA') }}"
       host: "{{ env_var('DATABRICKS_TEST_HOST') }}"
-      token: "{{ env_var('DATABRICKS_TEST_TOKEN') }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN') }}"
       http_path: "{{ env_var('DATABRICKS_TEST_PATH') }}"
-      threads: 25
+      threads: 10
 
     synapse:
       type: synapse

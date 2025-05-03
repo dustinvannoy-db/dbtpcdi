@@ -98,8 +98,8 @@ FROM (
             WHEN (th_st_id == "SBMT" AND t_tt_id IN ("TMB", "TMS")) OR th_st_id = "PNDG" THEN TRUE 
             WHEN th_st_id IN ("CMPT", "CNCL") THEN FALSE 
             ELSE cast(null as boolean) END AS create_flg
-        FROM {{ source('tpcdi', 'TradeHistory') }} t
-        JOIN {{ source('tpcdi', 'TradeHistoryRaw') }} th
+        FROM {{ ref('TradeHistory') }} t
+        JOIN {{ ref('TradeHistoryRaw') }} th
           ON th_t_id = t_id
         UNION ALL
         SELECT

@@ -6,7 +6,7 @@
 SELECT
     *,
     1 as batchid
-  FROM STREAM read_files(
+  FROM read_files(
     "{{ var('tpcdi_directory') }}sf={{ var('benchmark') }}/Batch1",
     format => "csv",
     inferSchema => False,

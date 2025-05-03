@@ -7,14 +7,16 @@ config-version: 2
 profile: 'sql_endpoints'
 
 vars:
+  tpcdi_directory: /Volumes/tpcdi/tpcdi_raw_data/tpcdi_volume/
   scalefactor: 10
   benchmark: 10
   stage: stagename
-  stagingschema: rstpcdi11stg
+  stagingcatalog: main
+  stagingschema: dbtpcdi_stg
   bucketname: bucketname  # bigquery, redshift only
   storageaccountname: synapsemigrationdemoadls
-  catalog: hive_metastore
-  prodschema: rstpcdi11prod
+  catalog: main
+  prodschema: dbtpcdi_prod
 
 model-paths: ["Databricks/models/main"]
 analysis-paths: ["analyses"]
@@ -28,6 +30,6 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-dispatch:
-  - macro_namespace: dbt_utils
-    search_order: ['dbsql_dbt_tpch', 'dbt_utils']
+# dispatch:
+#   - macro_namespace: dbt_utils
+#     search_order: ['dbsql_dbt_tpch', 'dbt_utils']

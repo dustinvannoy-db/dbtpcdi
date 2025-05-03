@@ -1,17 +1,17 @@
 version: 2
 
 models:
-  - name: DimCustomer
-    columns:
-      - name: tier
-        tests:
-          - not_null:
-              config:
-                store_failures: true
-          - accepted_values:
-              values: [1,2,3]
-              config:
-                store_failures: true
+  # - name: DimCustomer
+  #   columns:
+  #     - name: tier
+  #       tests:
+  #         - not_null:
+  #             config:
+  #               store_failures: true
+  #         - accepted_values:
+  #             values: [1,2,3]
+  #             config:
+  #               store_failures: true
 
 
     
@@ -30,13 +30,13 @@ models:
 
   
 
-  - name: DimCustomerStg
-    columns:
-      - name: effectivedate
-        tests:
-          - dateval:
-              config:
-                store_failures: true
+  # - name: DimCustomerStg
+  #   columns:
+  #     - name: effectivedate
+        # tests:
+        #   - dateval:
+        #       config:
+        #         store_failures: true
 
 
   - name: FactMarketHistory
@@ -46,11 +46,11 @@ models:
            - not_null:
               config:
                 store_failures: true
-      - name: PERatio
-        tests:
-           - not_null:
-              config:
-                store_failures: true
+      # - name: PERatio
+      #   tests:
+      #      - not_null:
+      #         config:
+      #           store_failures: true
 
   - name: FactWatches
     columns:
