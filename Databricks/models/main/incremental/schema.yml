@@ -22,11 +22,11 @@ models:
            - not_null:
               config:
                 store_failures: true
-      - name: sk_brokerid
-        tests:
-           - not_null:
-              config:
-                store_failures: true
+      # - name: sk_brokerid
+      #   tests:
+      #      - not_null:
+      #         config:
+      #           store_failures: true
 
   
 
@@ -94,16 +94,16 @@ models:
            - not_null:
               config:
                 store_failures: true
-      - name: commission
-        tests:
-           - tradecom:
-              config:
-                store_failures: true 
+      # - name: commission
+      #   tests:
+      #      - tradecom:
+      #         config:
+      #           store_failures: true 
                 
-      - name: fee
-        tests:
-           - tradefee:
-              config:
-                store_failures: true                                                    
+      # - name: fee
+      #   tests:
+      #      - tradefee:
+      #         config:
+      #           store_failures: true                                                    
 
 

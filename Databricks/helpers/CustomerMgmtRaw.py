@@ -27,11 +27,13 @@ user_name = (
 )
 
 dbutils.widgets.text("wh_db", f"{user_name}_TPCDI", "Root name of Target Warehouse")
-dbutils.widgets.text("staging_db", "dustinvannoy_dev")
+dbutils.widgets.text("staging_db", "dbtpcdi_stg")
 dbutils.widgets.text(
-    "tpcdi_directory", "/tmp/tpcdi/", "Directory where Raw Files are located"
+    "tpcdi_directory", "/Volumes/tpcdi/tpcdi_raw_data/tpcdi_volume/", "Directory where Raw Files are located"
 )
 dbutils.widgets.text("scale_factor", "10", "Scale factor")
+
+# COMMAND ----------
 
 # wh_db = f"{dbutils.widgets.get('wh_db')}_wh"
 # staging_db = f"{dbutils.widgets.get('wh_db')}_stage"
